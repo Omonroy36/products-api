@@ -4,10 +4,10 @@ import { isValidSku } from '../utils/utils';
 
 class Product extends Model<InferAttributes<Product>, InferCreationAttributes<Product>> {
   declare id: CreationOptional<number>;
-  declare sku: number;
+  declare sku: string;
   declare name: string;
   declare brand: string;
-  declare size: string;
+  declare size: string | null;
   declare price: number;
   declare image: string;
 }
@@ -25,14 +25,14 @@ Product.init(
       unique: true,
       validate: {
         isValid(value: string) {
-          if (isValidSku(value)) {
+          if (!isValidSku(value)) {
             throw new Error('sku is not valid');
           }
         },
       },
     },
     name: {
-      type: new DataTypes.STRING(50),
+      type: new DataTypes.STRING(100),
       allowNull: false,
       validate: {
         min: {
@@ -46,7 +46,7 @@ Product.init(
       },
     },
     brand: {
-      type: new DataTypes.STRING(50),
+      type: new DataTypes.STRING(100),
       allowNull: false,
       validate: {
         min: {

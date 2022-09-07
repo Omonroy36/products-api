@@ -2,7 +2,7 @@
   "name": "products-api",
   "version": "1.0.0",
   "description": "API to store and serve products.",
-  "main": "app.js",
+  "main": "index.js",
   "repository": "https://github.com/Omonroy36/products-api",
   "author": "Orlando Monrroy",
   "license": "MIT",
