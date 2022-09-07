@@ -1,4 +1,5 @@
 import express, { Express, Request, Response } from "express";
+import db from './models/config';
 import dotenv from "dotenv";
 import cors from "cors";
 
@@ -21,7 +22,7 @@ app.get("/", (req: Request, res: Response) => {
   await db
     .sync({ alter: isDev })
     .then(() => console.log("Connected to database..."))
-    .catch((error: any) => console.log(error));
+    .catch((error: unknown) => console.log(error));
   app.listen(port, () => {
     console.log(`[server]: Server is running at https://localhost:${port}`);
   });
