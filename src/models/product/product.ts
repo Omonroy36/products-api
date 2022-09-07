@@ -1,6 +1,6 @@
 import { Model, DataTypes, InferAttributes, InferCreationAttributes, CreationOptional } from 'sequelize';
-import sequelizeConnection from './config';
-import { isValidSku } from '../utils/utils';
+import sequelizeConnection from '../config';
+import { isValidSku } from '../../utils/utils';
 
 class Product extends Model<InferAttributes<Product>, InferCreationAttributes<Product>> {
   declare id: CreationOptional<number>;
@@ -9,7 +9,7 @@ class Product extends Model<InferAttributes<Product>, InferCreationAttributes<Pr
   declare brand: string;
   declare size: string | null;
   declare price: number;
-  declare image: string;
+  declare imageUrl: string;
 }
 
 Product.init(
@@ -35,14 +35,7 @@ Product.init(
       type: new DataTypes.STRING(100),
       allowNull: false,
       validate: {
-        min: {
-          args: [3],
-          msg: 'name field should be at least 3 characters long',
-        },
-        max: {
-          args: [50],
-          msg: 'name field maximun characters exceded',
-        },
+        len: [3, 50],
       },
     },
     brand: {
@@ -78,7 +71,7 @@ Product.init(
         },
       },
     },
-    image: {
+    imageUrl: {
       type: new DataTypes.STRING(100),
       allowNull: false,
       validate: {
