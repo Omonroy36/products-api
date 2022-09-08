@@ -8,7 +8,7 @@ import morgan from 'morgan';
 dotenv.config();
 
 export const app: Express = express();
-const port = process.env.PORT;
+const port = process.env.PORT || '5000';
 const isDev = process.env.NODE_ENV === 'development';
 
 app.use(cors());
