@@ -12,7 +12,7 @@ exports.productSchema = joi_1.default.object({
     name: joi_1.default.string().min(3).max(50).required(),
     brand: joi_1.default.string().min(3).max(50).required(),
     size: joi_1.default.string().min(1).max(20).allow(''),
-    price: joi_1.default.number().min(1).max(99999999).required(),
+    price: joi_1.default.number().strict().min(1).max(99999999).required(),
     imageUrl: joi_1.default.string().uri(),
     otherImages: joi_1.default.array().items(joi_1.default.string().uri()),
 });

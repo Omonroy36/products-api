@@ -7,7 +7,7 @@ export const productSchema = Joi.object({
   name: Joi.string().min(3).max(50).required(),
   brand: Joi.string().min(3).max(50).required(),
   size: Joi.string().min(1).max(20).allow(''),
-  price: Joi.number().min(1).max(99999999).required(),
+  price: Joi.number().strict().min(1).max(99999999).required(),
   imageUrl: Joi.string().uri(),
   otherImages: Joi.array().items(Joi.string().uri()),
 });

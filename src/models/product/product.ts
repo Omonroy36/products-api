@@ -1,5 +1,5 @@
 import { Model, DataTypes, InferAttributes, InferCreationAttributes, CreationOptional } from 'sequelize';
-import sequelizeConnection from '../config';
+import sequelizeConnection from '../../config/sequelize';
 import { isValidSku } from '../../utils/utils';
 
 class Product extends Model<InferAttributes<Product>, InferCreationAttributes<Product>> {
@@ -82,7 +82,6 @@ Product.init(
   {
     sequelize: sequelizeConnection,
     tableName: 'products',
-    paranoid: true,
   },
 );
 

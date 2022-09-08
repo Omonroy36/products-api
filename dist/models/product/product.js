@@ -4,7 +4,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
-const config_1 = __importDefault(require("../config"));
+const sequelize_2 = __importDefault(require("../../config/sequelize"));
 const utils_1 = require("../../utils/utils");
 class Product extends sequelize_1.Model {
 }
@@ -74,8 +74,7 @@ Product.init({
         },
     },
 }, {
-    sequelize: config_1.default,
+    sequelize: sequelize_2.default,
     tableName: 'products',
-    paranoid: true,
 });
 exports.default = Product;

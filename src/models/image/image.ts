@@ -1,5 +1,5 @@
 import { Model, DataTypes, InferAttributes, InferCreationAttributes, CreationOptional, ForeignKey } from 'sequelize';
-import sequelizeConnection from '../config';
+import sequelizeConnection from '../../config/sequelize';
 import Product from '../product/product';
 
 class Image extends Model<InferAttributes<Image>, InferCreationAttributes<Image>> {
@@ -23,7 +23,6 @@ Image.init(
   {
     sequelize: sequelizeConnection,
     tableName: 'images',
-    paranoid: true,
   },
 );
 

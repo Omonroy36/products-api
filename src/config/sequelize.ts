@@ -1,4 +1,4 @@
-import { Dialect, Sequelize } from "sequelize";
+import { Dialect, Sequelize } from 'sequelize';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -10,19 +10,18 @@ const dbDialect = process.env.DB_DIALECT as Dialect;
 const dbPassword = process.env.DB_PWD as string;
 
 const sequelizeConnection = new Sequelize(dbName, dbUser, dbPassword, {
-    host: dbHost,
-    dialect: dbDialect,
-    logging: false
+  host: dbHost,
+  dialect: dbDialect,
+  logging: false,
 });
 
 (async () => {
-    try {
-        await sequelizeConnection.authenticate();
-        console.log('Connection has been established successfully.');
-    } catch (error) {
-        console.error('Unable to connect to the database:', error);
-    }
+  try {
+    await sequelizeConnection.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
 })();
-
 
 export default sequelizeConnection;

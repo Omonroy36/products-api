@@ -1,18 +1,20 @@
 import express, { Express, Request, Response } from 'express';
 import productRoute from './routes/product';
-import db from './models/config';
+import db from './config/sequelize';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import morgan from 'morgan';
 
 dotenv.config();
 
-const app: Express = express();
+export const app: Express = express();
 const port = process.env.PORT;
 const isDev = process.env.NODE_ENV === 'development';
 
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(morgan('dev'));
 app.use('/api/store', productRoute);
 
 app.get('/', (req: Request, res: Response) => {
